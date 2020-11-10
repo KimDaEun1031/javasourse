@@ -71,6 +71,10 @@ public class User {
 
 	}
 
+	public String toString(String id) {		
+		return id;
+	}
+
 
 
 

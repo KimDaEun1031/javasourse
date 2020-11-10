@@ -1,6 +1,7 @@
 package member;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class GetInfo {
@@ -15,6 +16,7 @@ public class GetInfo {
 		
 		User users = new User(id, password, nickname, email, phoneNumber);
 		ArrayList<User> members = new ArrayList<User>();
+
 		
 		void start() {
 			System.out.println("##===== OO 커뮤니티에 오신 것을 환영합니다. =====##");
@@ -57,8 +59,10 @@ public class GetInfo {
 			case "e": case "E": 
 				System.out.println("##===== 회원 가입 페이지 =====##");
 				System.out.print("아이디 : ");
-				id = sc.next();				
+				id = sc.next();	
+				users.setId(id);
 				
+
 				System.out.print("비밀번호 : ");
 				password = sc.next();
 				users.setPassword(password);
@@ -76,7 +80,20 @@ public class GetInfo {
 				users.setPhoneNumber(phoneNumber);
 						
 				members.add(users);
-				MemberInfo();
+				
+//				for(int j=members.size()-1;j<members.size();) {
+//					for(int i=0;i<j;i++) {								
+//						if(members.get(j).getId().equals(members.get(i).toString(id))) {
+//							String mem = members.get(i).toString(id);
+//							System.out.println(mem);
+//							String me = members.get(j).getId();
+//							System.out.println(me);
+//							System.out.println("중복값있음");
+//							break;
+//						}
+//					}
+//				}
+//				MemberInfo();
 
 				break;
 	
@@ -87,8 +104,9 @@ public class GetInfo {
 	}
 		
 		void MemberInfo() {
-			String mem = members.get(5).toString();
-			System.out.println(mem);
+			String mem = members.get(5).toString(id);
+			String me = members.get(5).getId();
+			System.out.println(me);
 
 
 			
