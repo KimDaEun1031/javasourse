@@ -1,8 +1,10 @@
 package MEM;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import java.awt.Cursor;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -10,10 +12,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class SWMemberShip extends JFrame {
 
@@ -99,6 +104,7 @@ public class SWMemberShip extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				MembershipMain();
+				
 			}
 			
 		});
@@ -138,6 +144,7 @@ public class SWMemberShip extends JFrame {
 		screenDraw((Graphics2D) screenGraphic);
 		g.drawImage(screenImage, 0, 0, null); 
 		// 화면에 출력 = 화면에 그림들이 출력되지 않을 경우 screenImage가 맞는지 확인
+		
 	}
 
 	private void screenDraw(Graphics2D g) {
@@ -150,7 +157,40 @@ public class SWMemberShip extends JFrame {
 	
 	public void MembershipMain() {
 		shipButton.setVisible(false);
-		background = new ImageIcon(Launcher.class.getResource("../image/ShipBackground.png")).getImage();
+		
+		JPanel panelLogin = new JPanel();
+		panelLogin.add(new JLabel("아이디 : ")); 
+		panelLogin.add(new JTextField(18));
+
+	}
+	
+	public void SWLogin() {	
+		JFrame membership = new JFrame();
+		
+		membership.setUndecorated(true); // 프레임 테두리 없애기 - 메뉴바 설정 시
+		membership.setSize(200,400); // 사이즈 설정
+		membership.setResizable(false); // 사이즈를 마음대로 줄이거나 늘릴 수 있게
+		membership.setLocationRelativeTo(null); // 프로그램을 켰을 때 중간에 오게
+		membership.setLayout(null); // 메뉴바 설정 시	
+	
+		JPanel panelLogin = new JPanel();
+		panelLogin.add(new JLabel("아이디 : ")); 
+		panelLogin.add(new JTextField(18));
+		
+		JPanel panelPW = new JPanel();
+		panelPW.add(new JLabel("비밀번호 : ")); 
+		panelPW.add(new JTextField(18));
+		
+		JPanel panel4 = new JPanel();
+		panel4.setBackground(new Color(254,204,190));
+		panel4.setLayout(new BoxLayout(panel4, BoxLayout.Y_AXIS));
+		panel4.add(panelLogin);
+		panel4.add(panelPW);
+		
+		membership.add(panel4,BorderLayout.CENTER);
+		membership.pack();
+		membership.setVisible(true); // 투명성 설정	
+		
 	}
 
 }

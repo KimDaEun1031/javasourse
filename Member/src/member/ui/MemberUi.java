@@ -27,9 +27,9 @@ public class MemberUi {
 			switch (menu) {
 				case 1:
 					action = new MemberAddAction();
-					break;
+					break; // action 의 값이 위의 값으로 넘어감
 				case 2:
-					
+				    
 					break;
 				case 3:
 					
